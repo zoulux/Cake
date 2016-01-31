@@ -3,9 +3,10 @@ package com.pentakill.cake.ui.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ShopCartActivity extends AppCompatActivity {
+import com.pentakill.cake.R;
 
-    private String A;
+public class ShopCartActivity extends BaseActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

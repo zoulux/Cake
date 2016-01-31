@@ -3,7 +3,9 @@ package com.pentakill.cake.ui.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SettingActivity extends AppCompatActivity {
+import com.pentakill.cake.R;
+
+public class SettingActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
