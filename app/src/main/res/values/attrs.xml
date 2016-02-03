@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTitle">
+        <attr name="left_color" format="color"/>
+        <attr name="right_txt" format="string"/>
+        <attr name="right_txt_size" format="dimension"/>
+        <attr name="left_color_width" format="dimension"/>
+    </declare-styleable>
+    
+    
+</resources>
