@@ -1,5 +1,7 @@
 package com.pentakill.cake.model;
 
+import android.graphics.BitmapFactory;
+
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -27,13 +29,9 @@ public CategoryBean(){}
         this.res = res;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) {this.id = id;}
 
     public String getName() {
         return name;
