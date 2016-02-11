@@ -15,7 +15,6 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             mToast.setText(txt);
         }
-
         mToast.show();
     }
 

@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String TABLE_NAME = "cake.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Map<String, Dao> daos = new HashMap<>();
     private static DatabaseHelper instance;
 

@@ -32,4 +32,15 @@ public class ShopCartBean {
         this.price = price;
         this.remark = remark;
     }
+
+    @Override
+    public String toString() {
+        return "ShopCartBean{" +
+                "id=" + id +
+                ", cake=" + cake +
+                ", size='" + size + '\'' +
+                ", price='" + price + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }

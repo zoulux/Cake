@@ -1,10 +1,10 @@
 package com.pentakill.cake.model;
 
-import android.graphics.BitmapFactory;
-
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Arrays;
 
 /**
  * Created by zoulux on 2016-02-03  0:07.
@@ -19,10 +19,11 @@ public class CategoryBean {
     @DatabaseField(columnName = "name")
     private String name;
 
-    @DatabaseField(columnName = "res",dataType = DataType.BYTE_ARRAY)
+    @DatabaseField(columnName = "res", dataType = DataType.BYTE_ARRAY)
     private byte[] res;
 
-public CategoryBean(){}
+    public CategoryBean() {
+    }
 
     public CategoryBean(String name, byte[] res) {
         this.name = name;
@@ -47,5 +48,14 @@ public CategoryBean(){}
 
     public void setRes(byte[] res) {
         this.res = res;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", res=" + Arrays.toString(res) +
+                '}';
     }
 }
