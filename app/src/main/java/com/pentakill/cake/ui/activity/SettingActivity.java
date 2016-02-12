@@ -10,9 +10,9 @@ import com.pentakill.cake.db.ShopCartDao;
 public class SettingActivity extends BaseActivity {
     private static final String TAG = "SettingActivity";
 
-    CategoryDao categoryDao;
-    CakeDao cakeDao;
-    ShopCartDao shopCartDao;
+    private CategoryDao categoryDao;
+    private CakeDao cakeDao;
+    private ShopCartDao shopCartDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
