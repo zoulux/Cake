@@ -25,6 +25,7 @@ public class CakeDao {
         this.context = context;
 
         helper = DatabaseHelper.getInstance(context);
+
         try {
             cakeDaoOpe = helper.getDao(CakeBean.class);
         } catch (SQLException e) {
@@ -116,7 +117,7 @@ public class CakeDao {
 
         Bitmap res = ImageLoader.getInstance().loadImageSync("drawable://" + imgResId);
         Bitmap des1 = ImageLoader.getInstance().loadImageSync("drawable://" + desImgId1);
-        Bitmap des2 = ImageLoader.getInstance().loadImageSync("drawable://" + desImgId1);
+        Bitmap des2 = ImageLoader.getInstance().loadImageSync("drawable://" + desImgId2);
         ByteArrayOutputStream baosRes = new ByteArrayOutputStream();
         ByteArrayOutputStream baosDes1 = new ByteArrayOutputStream();
         ByteArrayOutputStream baosDes2 = new ByteArrayOutputStream();
@@ -133,4 +134,13 @@ public class CakeDao {
         add(cakeBean);
     }
 
+    public void clear() {
+        List<CakeBean> cakeBeans = selectAll();
+        try {
+            cakeDaoOpe.delete(cakeBeans);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

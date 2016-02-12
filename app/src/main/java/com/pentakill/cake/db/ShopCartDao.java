@@ -54,7 +54,21 @@ public class ShopCartDao {
         }
     }
 
+
+    public void clear(){
+        List<ShopCartBean> shopCartBeans = selectAll();
+        try {
+            shopCartOpe.delete(shopCartBeans);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<ShopCartBean> selectAll(){
+
+
+
+
         try {
             return shopCartOpe.queryForAll();
         } catch (SQLException e) {

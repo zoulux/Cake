@@ -2,7 +2,6 @@ package com.pentakill.cake.ui.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -15,6 +14,7 @@ import com.pentakill.cake.model.CategoryBean;
 import com.pentakill.cake.model.ShopCartBean;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -28,21 +28,69 @@ public class TestActivity extends BaseActivity {
     private static final String TAG = "TestActivity";
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activiyt_test);
 
-
-        setContentView(R.layout.activity_setting);
         categoryDao = new CategoryDao(this);
         cakeDao = new CakeDao(this);
         shopCartDao = new ShopCartDao(this);
 
 
-        addToShopCart();
 
 
     }
 
+
+    /**
+     *
+     * 相关示例
+     *
+     */
+
+
+    /**
+     * 通过分类名获得该类别下所有的水果
+     */
+
+    private void getFruitByName() {
+
+        Collection<CakeBean> beans = categoryDao.getFruitByName("水果蛋糕");
+
+        for (CakeBean bean : beans) {
+            Log.d(TAG, "onCreate: "+bean.toString());
+        }
+    }
+
+    /**
+     * 清除所有蛋糕
+     */
+
+    private void clearCake() {
+        cakeDao.clear();
+    }
+
+
+    /**
+     * 清除所有分类
+     */
+    private void clearCategory() {
+        categoryDao.clear();
+    }
+
+
+    /**
+     * 清除购物车中物品
+     */
+    private void clearShopCart() {
+
+        shopCartDao.clear();
+    }
+
+
+    /**
+     * 添加物品到购物车
+     */
     private void addToShopCart() {
         CakeBean cakeBean1 = cakeDao.selectByNumber("sg002");
         ShopCartBean shopCartBean1 = new ShopCartBean(cakeBean1, "8", "118", "不要巧克力");
@@ -51,6 +99,15 @@ public class TestActivity extends BaseActivity {
         CakeBean cakeBean2 = cakeDao.selectByNumber("sg005");
         ShopCartBean shopCartBean2 = new ShopCartBean(cakeBean2, "8", "118", "不要巧克力,谢谢");
         shopCartDao.add(shopCartBean2);
+    }
+
+    private void printShopCart() {
+
+        List<ShopCartBean> shopCartBeans = shopCartDao.selectAll();
+
+        for (ShopCartBean bean : shopCartBeans) {
+            Log.d(TAG, "printShopCart: " + bean.toString());
+        }
 
 
     }
@@ -64,10 +121,15 @@ public class TestActivity extends BaseActivity {
 
     }
 
+
+    /**
+     * 增加一种蛋糕
+     */
     private void addCake() {
         String general = "8%%118%%适合2-4人,10%%168%%适合4-6人,12%%218%%适合6-9人,14%%278%%适合9-12人,14%%278%%适合9-12人,16%%358%%适合9-12人,";
 
         CategoryBean categoryBean = categoryDao.selectByName("水果蛋糕");
+
         cakeDao.add("sg001", "多彩生活", categoryBean, general, "城区免费送货上门110", R.drawable.p001, R.drawable.default_img, R.drawable.default_img);
 
         cakeDao.add("sg002", "幸福生活", categoryBean, general, "城区免费送货上门220", R.drawable.p002, R.drawable.default_img, R.drawable.default_img);
@@ -91,6 +153,9 @@ public class TestActivity extends BaseActivity {
     }
 
 
+    /**
+     * 增加一个分类
+     */
     private void addCategory() {
         Bitmap bitmap = ImageLoader.getInstance().loadImageSync("drawable://" + R.drawable.pshuig);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -133,7 +198,5 @@ public class TestActivity extends BaseActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         res = baos.toByteArray();
         categoryDao.add(new CategoryBean("婚礼蛋糕", res));
-
-
     }
 }

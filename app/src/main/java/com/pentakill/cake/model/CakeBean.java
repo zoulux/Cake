@@ -4,13 +4,14 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Created by zoulux on 2016-02-02  23:59.
  */
 @DatabaseTable(tableName = "tb_cake")
-public class CakeBean {
+public class CakeBean implements Serializable {
 
     @DatabaseField(generatedId = true)
     private int id;
@@ -24,7 +25,7 @@ public class CakeBean {
     @DatabaseField(columnName = "res", dataType = DataType.BYTE_ARRAY)
     private byte[] res;
 
-    @DatabaseField(canBeNull = true, foreign = true, columnName = "category_id")
+    @DatabaseField(canBeNull = true, foreign = true, columnName = "category_id",foreignAutoRefresh = true)
     private CategoryBean category;//类别
 
     @DatabaseField(columnName = "size_price", defaultValue = "00%%00%%适合2-4人")
@@ -135,12 +136,12 @@ public class CakeBean {
                 "id=" + id +
                 ", number='" + number + '\'' +
                 ", name='" + name + '\'' +
-                ", res=" + Arrays.toString(res) +
                 ", category=" + category +
                 ", general='" + general + '\'' +
+                ", desText='" + desText + '\'' +
+                ", res=" + Arrays.toString(res) +
                 ", desc1=" + Arrays.toString(desc1) +
                 ", desc2=" + Arrays.toString(desc2) +
-                ", desText='" + desText + '\'' +
                 '}';
     }
 }

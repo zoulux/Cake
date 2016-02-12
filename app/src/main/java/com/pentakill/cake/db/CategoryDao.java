@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 
 import com.j256.ormlite.dao.Dao;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pentakill.cake.model.CakeBean;
 import com.pentakill.cake.model.CategoryBean;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -72,11 +74,18 @@ public class CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
         if (categoryBeans != null && categoryBeans.size() > 0) {
             return categoryBeans.get(0);
         }
         return null;
 
+    }
+
+    public Collection<CakeBean> getFruitByName(String name){
+        CategoryBean bean = selectByName(name);
+        return  bean.getCakes();
     }
 
     public void update(CategoryBean newCategoryBean) {
@@ -104,4 +113,13 @@ public class CategoryDao {
     }
 
 
+    public void clear() {
+        List<CategoryBean> categoryBeans = selectAll();
+        try {
+            categoryDaoOpe.delete(categoryBeans);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
