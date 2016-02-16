@@ -9,6 +9,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.pentakill.cake.model.CakeBean;
 import com.pentakill.cake.model.CategoryBean;
+import com.pentakill.cake.model.ShopBean;
 import com.pentakill.cake.model.ShopCartBean;
 
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String TABLE_NAME = "cake.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     private Map<String, Dao> daos = new HashMap<>();
     private static DatabaseHelper instance;
 
@@ -36,6 +37,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, CakeBean.class);
             TableUtils.createTable(connectionSource, CategoryBean.class);
             TableUtils.createTable(connectionSource, ShopCartBean.class);
+            TableUtils.createTable(connectionSource, ShopBean.class);
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,6 +53,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, CakeBean.class, true);
             TableUtils.dropTable(connectionSource, CategoryBean.class, true);
             TableUtils.dropTable(connectionSource, ShopCartBean.class, true);
+            TableUtils.dropTable(connectionSource, ShopBean.class, true);
 
             onCreate(database, connectionSource);
         } catch (SQLException e) {

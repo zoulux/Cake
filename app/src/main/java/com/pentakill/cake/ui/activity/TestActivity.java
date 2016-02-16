@@ -38,6 +38,7 @@ public class TestActivity extends BaseActivity {
 
 
 
+        printCake();
 
     }
 

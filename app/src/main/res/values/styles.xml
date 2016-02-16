@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="PopupStyle">
+        <item name="android:padding">15dp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
 </resources>

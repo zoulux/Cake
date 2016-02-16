@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginLeft="10dp"
+    android:orientation="vertical"
     tools:context="com.pentakill.cake.ui.activity.SettingActivity">
 
     <ScrollView
@@ -36,7 +36,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="基本信息" />
+                        android:text="基本信息"
+                        android:textSize="@dimen/setting_title_text_size" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,7 +85,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="界面主题" />
+                        android:text="界面主题"
+                        android:textSize="@dimen/setting_title_text_size" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,7 +106,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="right|bottom"
-                            android:text="店标：" />
+                            android:text="店标："
+                            android:textSize="@dimen/setting_second_title_text_size" />
 
 
                         <LinearLayout
@@ -114,15 +117,24 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:src="@mipmap/ic_launcher" />
 
                             <TextView
+                                android:id="@+id/tv_set_shop_icon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:background="@drawable/text_bg"
                                 android:gravity="right|bottom"
-                                android:text="更换" />
+                                android:paddingBottom="3dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="3dp"
+                                android:text="更换"
+                                android:textColor="#fff"
+                                android:textSize="@dimen/setting_button_text_size" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -139,7 +151,8 @@
                             android:layout_marginBottom="5dp"
                             android:layout_weight="1"
                             android:gravity="right|bottom"
-                            android:text="店面名称：" />
+                            android:text="店面名称："
+                            android:textSize="@dimen/setting_second_title_text_size" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -148,10 +161,12 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/et_category_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="50dp"
-                                android:hint="面包狼" />
+                                android:hint="面包狼11"
+                                android:textSize="@dimen/setting_second_title_text_size" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -167,7 +182,8 @@
                             android:layout_marginBottom="5dp"
                             android:layout_weight="1"
                             android:gravity="right|bottom"
-                            android:text="联系方式：" />
+                            android:text="联系方式："
+                            android:textSize="@dimen/setting_second_title_text_size" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -176,10 +192,12 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/et_category_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="50dp"
-                                android:hint="800 8208801" />
+                                android:hint="800 8208801222"
+                                android:textSize="@dimen/setting_second_title_text_size" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -198,155 +216,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="分类设置" />
+                        android:text="分类设置"
+                        android:textSize="@dimen/setting_title_text_size" />
                 </LinearLayout>
 
-                <LinearLayout
+                <com.pentakill.cake.ui.widget.ExpandableListView
+                    android:id="@+id/lv_category_setting"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"></com.pentakill.cake.ui.widget.ExpandableListView>
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="水果蛋糕" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="鲜奶蛋糕" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="儿童蛋糕" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="节日蛋糕" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="祝寿蛋糕" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="裸蛋糕" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_marginLeft="30dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorTextofLeft"
-                            android:text="添加"
-                            android:textColor="#fff" />
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorTextofLeft"
-                            android:text="修改"
-                            android:textColor="#fff" />
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorTextofLeft"
-                            android:text="删除"
-                            android:textColor="#fff" />
-                    </LinearLayout>
-
-
-                </LinearLayout>
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/text_bg"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="添加分类"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/setting_button_text_size" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -361,7 +250,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="蛋糕设置" />
+                        android:text="蛋糕设置"
+                        android:textSize="@dimen/setting_title_text_size" />
                 </LinearLayout>
 
 
@@ -375,25 +265,29 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="50dp"
                         android:hint="蛋糕编号"
-                        android:textSize="15dp" />
+                        android:textSize="@dimen/setting_second_title_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:background="@color/colorTextofLeft"
+                        android:background="@drawable/text_bg"
                         android:gravity="center"
+                        android:padding="2dp"
                         android:text="修改"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        android:textSize="@dimen/setting_button_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:background="@color/colorTextofLeft"
+                        android:background="@drawable/text_bg"
                         android:gravity="center"
+                        android:padding="2dp"
                         android:text="添加"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        android:textSize="@dimen/setting_button_text_size" />
 
                 </LinearLayout>
 
@@ -411,40 +305,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="导入导出" />
+                        android:text="导入导出"
+                        android:textSize="@dimen/setting_title_text_size" />
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginLeft="40dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="将图片和设置整体导入导出"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:orientation="vertical">
 
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="将图片和设置整体导入导出"
+                        android:textSize="@dimen/setting_second_title_text_size" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@color/colorTextofLeft"
+                            android:background="@drawable/text_bg"
                             android:gravity="center"
+                            android:padding="2dp"
                             android:text="导入"
-                            android:textColor="#fff" />
+                            android:textColor="#fff"
+                            android:textSize="@dimen/setting_button_text_size" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:background="@color/colorTextofLeft"
+                            android:background="@drawable/text_bg"
                             android:gravity="center"
+                            android:padding="2dp"
                             android:text="导出"
-                            android:textColor="#fff" />
+                            android:textColor="#fff"
+                            android:textSize="@dimen/setting_button_text_size" />
 
 
                     </LinearLayout>

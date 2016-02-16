@@ -6,7 +6,6 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -78,7 +77,7 @@ public class CategoryBean implements Serializable{
         return "CategoryBean{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", res=" + Arrays.toString(res) +
+             //   ", res=" + Arrays.toString(res) +
                 '}';
     }
 }
