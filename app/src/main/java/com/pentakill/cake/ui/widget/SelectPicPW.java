@@ -62,10 +62,10 @@ public class SelectPicPW extends PopupWindow implements View.OnClickListener, Po
         if (listener != null)
             switch (v.getId()) {
                 case R.id.tv_select_album:
-                    listener.onSelectByAlbum();
+                    listener.onSelectFromAlbum();
                     break;
                 case R.id.tv_select_camera:
-                    listener.onSelectByCamera();
+                    listener.onSelectFromCamera();
                     break;
 
             }
