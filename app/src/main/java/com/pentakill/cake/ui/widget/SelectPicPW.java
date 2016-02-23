@@ -81,7 +81,6 @@ setAlpha(1.0f);
     public void showAtLocation(View parent, int gravity, int x, int y) {
         super.showAtLocation(parent, gravity, x, y);
         setAlpha(0.6f);
-        Log.d(TAG, "showAtLocation: >>>>>");
     }
 
    public void setAlpha(float a)

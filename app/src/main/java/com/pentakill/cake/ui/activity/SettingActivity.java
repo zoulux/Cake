@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pentakill.cake.R;
 import com.pentakill.cake.common.listener.PopupListener;
 import com.pentakill.cake.db.CakeDao;
@@ -47,6 +48,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private int REQUEST_CODE_CAPTURE_CAMEIA = 0x1;
     private int REQUEST_CODE_PICK_IMAGE = 0x2;
 
+    private ImageView ivTheme1, ivTheme2, ivTheme3, ivTheme4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         etShopName = (EditText) findViewById(R.id.et_category_name);
         tvSetShopIcon = (TextView) findViewById(R.id.tv_set_shop_icon);
         etShopPhone = (EditText) findViewById(R.id.et_category_phone);
-        ivShopIcon= (ImageView) findViewById(R.id.iv_shop_icon);
+        ivShopIcon = (ImageView) findViewById(R.id.iv_shop_icon);
+        ivTheme1 = (ImageView) findViewById(R.id.iv_theme1);
+        ivTheme2 = (ImageView) findViewById(R.id.iv_theme2);
+        ivTheme3 = (ImageView) findViewById(R.id.iv_theme3);
+        ivTheme4 = (ImageView) findViewById(R.id.iv_theme4);
 
 
         adapter = new CategorySettingAdapter(this, R.layout.item_category_setting);
@@ -84,6 +91,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         etShopName.setHint(shopDao.getShopName());
 
         tvSetShopIcon.setOnClickListener(this);
+        ivTheme1.setOnClickListener(this);
+        ivTheme2.setOnClickListener(this);
+        ivTheme3.setOnClickListener(this);
+        ivTheme4.setOnClickListener(this);
 
 
         selectShopIconPW = new SelectPicPW(this);
@@ -95,7 +106,25 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.tv_set_shop_icon:
                 setShopIcon(v);
                 break;
+            case R.id.iv_theme1:
+                changeTheme(1);
+                break;
+            case R.id.iv_theme2:
+                changeTheme(2);
+                break;
+            case R.id.iv_theme3:
+                changeTheme(3);
+                break;
+            case R.id.iv_theme4:
+                changeTheme(4);
+                break;
+
         }
+
+    }
+
+    private void changeTheme(int themeType) {
+        showToast(themeType + "");
 
     }
 
@@ -109,7 +138,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     public void onSelectFromAlbum() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        startActivityForResult(intent, REQUEST_CODE_CAPTURE_CAMEIA);
+        startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
 
         Log.d(TAG, "onSelectFromAlbum: ");
     }
@@ -137,20 +166,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         if (requestCode == REQUEST_CODE_PICK_IMAGE) {
             Uri uri = data.getData();
-            Log.d(TAG, "onActivityResult: "+uri.toString());
-
+            ImageLoader.getInstance().displayImage(uri.toString(), ivShopIcon);
         } else if (requestCode == REQUEST_CODE_CAPTURE_CAMEIA) {
             Uri uri = data.getData();
             Bitmap bitmap = null;
-            if (uri==null){
+            if (uri == null) {
                 Bundle bundle = data.getExtras();
-           bitmap= (Bitmap) bundle.get("data");
-
+                bitmap = (Bitmap) bundle.get("data");
+                ivShopIcon.setImageBitmap(bitmap);
+            }else{
+                ImageLoader.getInstance().displayImage(uri.toString(), ivShopIcon);
             }
-            ivShopIcon.setImageBitmap(bitmap);
-            Log.d(TAG, "onActivityResult: "+bitmap.toString());
-
-//            Log.d(TAG, "onActivityResult: "+uri.toString());
         }
 
 
