@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -41,7 +42,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     private EditText etShopName;
     private EditText etShopPhone;
-    private TextView tvSetShopIcon;
+    private TextView tvSetShopIcon, tvSetShopName, tvSetShopMobile;
     private ImageView ivShopIcon;
 
     private SelectPicPW selectShopIconPW;
@@ -58,7 +59,19 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         initDaos();
         initViews();
+        initListener();
         initDatas();
+
+    }
+
+    private void initListener() {
+        tvSetShopIcon.setOnClickListener(this);
+        ivTheme1.setOnClickListener(this);
+        ivTheme2.setOnClickListener(this);
+        ivTheme3.setOnClickListener(this);
+        ivTheme4.setOnClickListener(this);
+        tvSetShopName.setOnClickListener(this);
+        tvSetShopMobile.setOnClickListener(this);
 
     }
 
@@ -76,34 +89,29 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private void initViews() {
         listView = (ExpandableListView) findViewById(R.id.lv_category_setting);
         etShopName = (EditText) findViewById(R.id.et_category_name);
-        tvSetShopIcon = (TextView) findViewById(R.id.tv_set_shop_icon);
+        tvSetShopIcon = (TextView) findViewById(R.id.tv_update_shop_mobile);
         etShopPhone = (EditText) findViewById(R.id.et_category_phone);
         ivShopIcon = (ImageView) findViewById(R.id.iv_shop_icon);
         ivTheme1 = (ImageView) findViewById(R.id.iv_theme1);
         ivTheme2 = (ImageView) findViewById(R.id.iv_theme2);
         ivTheme3 = (ImageView) findViewById(R.id.iv_theme3);
         ivTheme4 = (ImageView) findViewById(R.id.iv_theme4);
+        tvSetShopName = (TextView) findViewById(R.id.tv_update_shop_name);
+        tvSetShopMobile = (TextView) findViewById(R.id.tv_update_shop_mobile);
 
 
         adapter = new CategorySettingAdapter(this, R.layout.item_category_setting);
         listView.setAdapter(adapter);
 
         etShopName.setHint(shopDao.getShopName());
-
-        tvSetShopIcon.setOnClickListener(this);
-        ivTheme1.setOnClickListener(this);
-        ivTheme2.setOnClickListener(this);
-        ivTheme3.setOnClickListener(this);
-        ivTheme4.setOnClickListener(this);
-
-
+        etShopPhone.setHint(shopDao.getShopPhone());
         selectShopIconPW = new SelectPicPW(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_set_shop_icon:
+            case R.id.tv_update_shop_icon:
                 setShopIcon(v);
                 break;
             case R.id.iv_theme1:
@@ -118,9 +126,29 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.iv_theme4:
                 changeTheme(4);
                 break;
+            case R.id.tv_update_shop_name:
+                updateName();
+                break;
+            case R.id.tv_update_shop_mobile:
+                updateMobile();
+                break;
 
         }
 
+    }
+
+    private void updateMobile() {
+        String name = etShopName.getText().toString();
+        if (!TextUtils.isEmpty(name)){
+        shopDao.setShopName(name);
+        }
+    }
+
+    private void updateName() {
+        String phone = etShopPhone.getText().toString();
+        if (!TextUtils.isEmpty(phone)){
+            shopDao.setShopPhone(phone);
+        }
     }
 
     private void changeTheme(int themeType) {
@@ -174,7 +202,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 Bundle bundle = data.getExtras();
                 bitmap = (Bitmap) bundle.get("data");
                 ivShopIcon.setImageBitmap(bitmap);
-            }else{
+            } else {
                 ImageLoader.getInstance().displayImage(uri.toString(), ivShopIcon);
             }
         }
